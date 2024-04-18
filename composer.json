@@ -1,0 +1,17 @@
+{
+    "name": "giovane/carrinho_de_compras",
+    "autoload": {
+        "psr-4": {
+            "app\\": "app"
+        }
+    },
+    "authors": [
+        {
+            "name": "giovane-f16",
+            "email": "giovane_16silva@hotmail.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.8"
+    }
+}

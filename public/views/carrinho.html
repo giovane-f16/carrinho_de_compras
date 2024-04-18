@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Carrinho</title>
+</head>
+<body>
+    <h2>Carrinho | <a href="/">Início</a></h2>
+    <hr>
+    <div id="container">
+        {% if produtos.produtos %}
+            <ul>
+                {% for produto in produtos.produtos %}
+                    <li class="cart-product">
+                        {{ produto["nome"] }}
+                        R$ {{ produto["preco"] | number_format(2, ",", ".") }}
+                        <form action="quantidade.php" method="get">
+                            <input type="hidden" name="id" value="{{ produto["id"] }}">
+                            <input type="text" name="quantidade" value="{{ produto["quantidade"] }}" id="cart-input-qty">
+                            | Unidade(s) {{ produto["subtotal"] | number_format(2, ",", ".") }}
+                        </form>
+                        <a href="remover.php?id={{ produto["id"] }}" id="cart-remove">Remover</a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div id="cart-total-clear">
+                <span id="cart-total">
+                    Total: R$ {{ produtos.total | number_format(2, ",", ".") }}
+                </span>
+                <span id="cart-clear">
+                    <a href="limpar.php">Limpar carrinho</a>
+                </span>
+            </div>
+        {% else %}
+            <h3>Nenhum produto no carrinho de compras.</h3>
+        {% endif %}
+    </div>
+</body>
+</html>

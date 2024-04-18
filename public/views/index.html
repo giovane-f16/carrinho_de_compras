@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Carrinho de compras</title>
+</head>
+<body>
+    <ul id="container">
+        <h3>Produtos: {{ quantidade }} | <a href="carrinho.php">Ir para o Carrinho</a></h3>
+        {% for id, produto in produtos %}
+            <li>
+                {{ produto.nome }} | R$ {{ produto.preco | number_format(2, ",", ".") }}
+                <a href="add.php?id={{ produto.id }}">Adicionar ao carrinho</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
